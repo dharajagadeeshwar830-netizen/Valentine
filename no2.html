@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Last Hope</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #fff5f8, #ffe6f0);
+      font-family: "Segoe UI", sans-serif;
+      text-align: center;
+      padding-top: 120px;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #ad1457;
+      font-size: 34px;
+      animation: fadeIn 2s ease;
+    }
+
+    .broken {
+      font-size: 60px;
+      animation: shake 1.5s infinite;
+    }
+
+    button {
+      padding: 18px 50px;
+      font-size: 22px;
+      border-radius: 35px;
+      border: none;
+      margin-top: 40px;
+      cursor: pointer;
+      background: #ff4d6d;
+      color: white;
+      box-shadow: 0 0 20px rgba(255,77,109,0.6);
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.15);
+    }
+
+    @keyframes shake {
+      0% { transform: rotate(0); }
+      25% { transform: rotate(5deg); }
+      50% { transform: rotate(-5deg); }
+      75% { transform: rotate(5deg); }
+      100% { transform: rotate(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="broken">🥺</div>
+  <h1>This is my last question… will you be mine?</h1>
+
+  <button id="yes">Yes… 💖</button>
+
+  <script>
+    document.getElementById("yes").onclick = function() {
+      document.body.style.opacity = "0";
+      setTimeout(() => {
+        window.location.href = "yes.html";
+      }, 900);
+    };
+  </script>
+
+</body>
+</html>

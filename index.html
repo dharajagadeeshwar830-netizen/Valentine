@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Just One Question</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #ffe6f0, #fff);
+      font-family: "Segoe UI", sans-serif;
+      text-align: center;
+      padding-top: 120px;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #d6336c;
+      font-size: 36px;
+      animation: fadeIn 2s ease;
+    }
+
+    .heart {
+      font-size: 40px;
+      animation: pulse 1.5s infinite;
+    }
+
+    button {
+      padding: 15px 40px;
+      font-size: 20px;
+      border-radius: 30px;
+      border: none;
+      margin: 25px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+      box-shadow: 0 0 15px rgba(255,77,109,0.5);
+    }
+
+    #no {
+      background: #999;
+      color: white;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heart">💖</div>
+  <h1>Hey there… will you be my Valentine?</h1>
+
+  <button id="yes">Yes 💕</button>
+  <button id="no">No 😢</button>
+
+  <script>
+    document.getElementById("yes").onclick = function() {
+      document.body.style.opacity = "0";
+      setTimeout(() => {
+        window.location.href = "yes.html";
+      }, 800);
+    };
+
+    document.getElementById("no").onclick = function() {
+      document.body.style.opacity = "0";
+      setTimeout(() => {
+        window.location.href = "no1.html";
+      }, 800);
+    };
+  </script>
+
+</body>
+</html>
