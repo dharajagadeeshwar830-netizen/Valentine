@@ -3,51 +3,70 @@
 <head>
   <title>My Last Hope</title>
   <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
     body {
-      background: linear-gradient(to bottom, #fff5f8, #ffe6f0);
-      font-family: "Segoe UI", sans-serif;
-      text-align: center;
-      padding-top: 120px;
+      height: 100vh;
+      background: linear-gradient(to bottom, #ffb6c1, #ff6f91, #ff2d55);
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       overflow: hidden;
     }
 
-    h1 {
-      color: #ad1457;
-      font-size: 34px;
-      animation: fadeIn 2s ease;
+    .card {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(16px);
+      padding: 70px 60px;
+      border-radius: 35px;
+      box-shadow: 0 0 50px rgba(255,0,90,0.5);
+      text-align: center;
+      animation: pop 1.6s ease;
     }
 
-    .broken {
-      font-size: 60px;
-      animation: shake 1.5s infinite;
+    h1 {
+      font-size: 36px;
+      color: #7a002f;
+      margin-bottom: 45px;
+      line-height: 1.3;
+      animation: fadeUp 2s ease;
     }
 
     button {
-      padding: 18px 50px;
+      padding: 18px 55px;
       font-size: 22px;
-      border-radius: 35px;
+      border-radius: 45px;
       border: none;
-      margin-top: 40px;
       cursor: pointer;
-      background: #ff4d6d;
+      background: linear-gradient(45deg, #ff2d55, #ff6f91);
       color: white;
-      box-shadow: 0 0 20px rgba(255,77,109,0.6);
-      transition: 0.3s;
+      font-weight: 600;
+      box-shadow: 0 0 30px rgba(255,45,85,0.8);
+      transition: 0.4s ease;
     }
 
-    button:hover {
-      transform: scale(1.15);
+    button:hover { transform: scale(1.2); }
+
+    .pulseHeart {
+      position: absolute;
+      font-size: 50px;
+      animation: beat 1.2s infinite;
+      opacity: 0.7;
     }
 
-    @keyframes shake {
-      0% { transform: rotate(0); }
-      25% { transform: rotate(5deg); }
-      50% { transform: rotate(-5deg); }
-      75% { transform: rotate(5deg); }
-      100% { transform: rotate(0); }
+    @keyframes beat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.25); }
+      100% { transform: scale(1); }
     }
 
-    @keyframes fadeIn {
+    @keyframes pop {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
@@ -55,17 +74,26 @@
 </head>
 <body>
 
-  <div class="broken">🥺</div>
-  <h1>This is my last question… will you be mine?</h1>
-
-  <button id="yes">Yes… 💖</button>
+  <div class="card">
+    <h1>This is my last question…<br>will you be mine? 🥺</h1>
+    <button id="yes">Yes… 💖</button>
+  </div>
 
   <script>
-    document.getElementById("yes").onclick = function() {
+    function pulseHeart() {
+      const h = document.createElement("div");
+      h.className = "pulseHeart";
+      h.innerHTML = "❤️";
+      h.style.left = Math.random() * 100 + "vw";
+      h.style.top = Math.random() * 100 + "vh";
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 1500);
+    }
+    setInterval(pulseHeart, 700);
+
+    document.getElementById("yes").onclick = () => {
       document.body.style.opacity = "0";
-      setTimeout(() => {
-        window.location.href = "yes.html";
-      }, 900);
+      setTimeout(() => location.href = "yes.html", 1000);
     };
   </script>
 
