@@ -1,85 +1,129 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Just One Question</title>
+  <title>One Question</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      background: linear-gradient(to bottom, #ffe6f0, #fff);
-      font-family: "Segoe UI", sans-serif;
-      text-align: center;
-      padding-top: 120px;
+      height: 100vh;
+      background: radial-gradient(circle at top, #ffd1dc, #ff9aa2, #ff4d6d);
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       overflow: hidden;
     }
 
-    h1 {
-      color: #d6336c;
-      font-size: 36px;
-      animation: fadeIn 2s ease;
+    .card {
+      background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(15px);
+      padding: 60px 50px;
+      border-radius: 30px;
+      box-shadow: 0 0 40px rgba(255,0,100,0.4);
+      text-align: center;
+      animation: pop 1.5s ease;
     }
 
-    .heart {
-      font-size: 40px;
-      animation: pulse 1.5s infinite;
+    h1 {
+      font-size: 38px;
+      color: #8b0035;
+      margin-bottom: 40px;
+      line-height: 1.3;
+      animation: fadeUp 2s ease;
+    }
+
+    .btns {
+      margin-top: 30px;
     }
 
     button {
-      padding: 15px 40px;
+      padding: 16px 45px;
       font-size: 20px;
-      border-radius: 30px;
+      border-radius: 40px;
       border: none;
-      margin: 25px;
+      margin: 15px;
       cursor: pointer;
-      transition: 0.3s;
+      transition: 0.4s ease;
+      font-weight: 600;
     }
 
     #yes {
-      background: #ff4d6d;
+      background: linear-gradient(45deg, #ff2d55, #ff6f91);
       color: white;
-      box-shadow: 0 0 15px rgba(255,77,109,0.5);
+      box-shadow: 0 0 25px rgba(255,45,85,0.7);
     }
 
     #no {
-      background: #999;
-      color: white;
+      background: rgba(255,255,255,0.8);
+      color: #444;
     }
 
     button:hover {
-      transform: scale(1.1);
+      transform: scale(1.15);
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
+    .heart {
+      position: absolute;
+      font-size: 22px;
+      animation: float 7s linear infinite;
+      opacity: 0.8;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+    @keyframes float {
+      to {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-  <div class="heart">💖</div>
-  <h1>Hey there… will you be my Valentine?</h1>
-
-  <button id="yes">Yes 💕</button>
-  <button id="no">No 😢</button>
+  <div class="card">
+    <h1>Hey you…<br>Will you be my Valentine? 💗</h1>
+    <div class="btns">
+      <button id="yes">Yes 💖</button>
+      <button id="no">No 😢</button>
+    </div>
+  </div>
 
   <script>
-    document.getElementById("yes").onclick = function() {
+    function createHeart() {
+      const h = document.createElement("div");
+      h.className = "heart";
+      h.innerHTML = "💗";
+      h.style.left = Math.random() * 100 + "vw";
+      h.style.top = "110vh";
+      h.style.fontSize = (16 + Math.random() * 20) + "px";
+      h.style.animationDuration = (5 + Math.random() * 4) + "s";
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 9000);
+    }
+    setInterval(createHeart, 400);
+
+    document.getElementById("yes").onclick = () => {
       document.body.style.opacity = "0";
-      setTimeout(() => {
-        window.location.href = "yes.html";
-      }, 800);
+      setTimeout(() => location.href = "yes.html", 900);
     };
 
-    document.getElementById("no").onclick = function() {
+    document.getElementById("no").onclick = () => {
       document.body.style.opacity = "0";
-      setTimeout(() => {
-        window.location.href = "no1.html";
-      }, 800);
+      setTimeout(() => location.href = "no1.html", 900);
     };
   </script>
 
