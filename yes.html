@@ -3,54 +3,58 @@
 <head>
   <title>You Said Yes</title>
   <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
     body {
-      background: linear-gradient(to bottom, #ffe6f0, #fff);
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #ffd1dc, #ff9aa2, #ff4d6d);
       font-family: "Georgia", serif;
       text-align: center;
-      padding: 80px 30px;
+      padding: 90px 30px;
       overflow-x: hidden;
     }
 
     h1 {
-      color: #d6336c;
-      font-size: 40px;
-      margin-bottom: 40px;
+      font-size: 44px;
+      color: #7a002f;
+      margin-bottom: 50px;
       animation: fadeIn 2s ease;
     }
 
     .poem {
-      font-size: 22px;
-      color: #b03060;
-      line-height: 1.8;
-      margin-bottom: 40px;
+      font-size: 24px;
+      color: #8b0035;
+      line-height: 1.9;
+      margin-bottom: 50px;
       animation: slideUp 2.5s ease;
     }
 
     .para {
       font-size: 18px;
       color: #444;
-      margin: 0 auto 50px;
-      max-width: 600px;
-      line-height: 1.7;
+      max-width: 650px;
+      margin: 0 auto 60px;
+      line-height: 1.8;
       animation: fadeIn 3.5s ease;
     }
 
     .qr img {
-      width: 200px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(255, 0, 100, 0.3);
-      animation: pulse 2s infinite;
+      width: 220px;
+      border-radius: 25px;
+      box-shadow: 0 0 25px rgba(255,0,100,0.4);
+      animation: glow 2s infinite;
     }
 
-    .hearts {
+    .float {
       position: fixed;
       top: -50px;
       font-size: 24px;
-      animation: fall 6s linear infinite;
+      animation: fall 7s linear infinite;
+      opacity: 0.8;
     }
 
     @keyframes fall {
-      to { transform: translateY(110vh); opacity: 0; }
+      to { transform: translateY(120vh); opacity: 0; }
     }
 
     @keyframes fadeIn {
@@ -59,14 +63,14 @@
     }
 
     @keyframes slideUp {
-      from { opacity: 0; transform: translateY(40px); }
+      from { opacity: 0; transform: translateY(50px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
+    @keyframes glow {
+      0% { box-shadow: 0 0 15px rgba(255,0,100,0.4); }
+      50% { box-shadow: 0 0 35px rgba(255,0,100,0.8); }
+      100% { box-shadow: 0 0 15px rgba(255,0,100,0.4); }
     }
   </style>
 </head>
@@ -89,28 +93,24 @@
   </div>
 
   <div class="qr">
-    <p style="color:#d6336c; font-size:18px;">Scan this ❤️</p>
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=YouAreMyValentine">
-    <p style="font-size:14px;color:#777;"></p>
+    <p style="color:#7a002f; font-size:18px;">Scan this ❤️</p>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=YouAreMyValentine">
+    <p style="font-size:14px;color:#666;">(You can change this QR later)</p>
   </div>
 
   <script>
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "hearts";
-      heart.innerHTML = "💗";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (4 + Math.random() * 3) + "s";
-      document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 7000);
+    function floatHeart() {
+      const f = document.createElement("div");
+      f.className = "float";
+      f.innerHTML = "💗";
+      f.style.left = Math.random() * 100 + "vw";
+      f.style.fontSize = (18 + Math.random() * 20) + "px";
+      f.style.animationDuration = (5 + Math.random() * 4) + "s";
+      document.body.appendChild(f);
+      setTimeout(() => f.remove(), 9000);
     }
-
-    setInterval(createHeart, 500);
+    setInterval(floatHeart, 400);
   </script>
 
 </body>
 </html>
-
